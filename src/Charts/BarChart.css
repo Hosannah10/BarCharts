@@ -1,5 +1,119 @@
+body {
+  align-items: center;
+  font-family:'Times New Roman', Times, serif;
+}
 .bar{
-    margin-top: 50px;
+    margin-top: 0px;
     margin-left: 0px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
   }
+/* .text2{
+  font-size: 40px;
+  color: grey;
+} */
+.box{
+  width:30px;
+  height:15px;
+  position:absolute;
+  margin-left: 500px;
+  margin-top: 25px;
+  background-color: #4caf50;
+}
+/* .hide {
+  display: none;
+}
+    
+.bart:hover + .hide {
+  display: block;
+  color: #4caf50;
+  margin-left:0px;
+  padding-left:45px;
+  word-spacing: 100px;
+  
+} */
+.bart{
+  margin-top: 100px;
+}
+.team{
+  margin: -100px 0 0 0;
+  
+}
+.text{
+  /* margin: 20px 0 0 0; */
+  color: rgb(92, 92, 92);
+  font-family: cursive;
+}
+
+.date {
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: rgb(46, 46, 46);
+  font-family: cursive;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+}
+
+.date:focus {
+  outline: none;
+  border-color: #555;
+}
+
+button{
+  padding: 7px 25px;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 20px;
+  font-family: cursive;
+  border: none;
+  cursor: pointer;
+  
+}
+  button:hover{
+      background-color: rgb(41, 126, 41);
+  }
+
+.dates{
+  margin: 50px 55% 0 0;
+}
+
+.button{
+  margin: 10px 0 0 20px;
+}
+
+label {
+  color: rgb(92, 92, 92);
+  font-family: cursive;
+}
+select {
+  padding: 7px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: rgb(46, 46, 46);
+  font-family:cursive;
+  cursor:pointer;
+}
+
+select:hover,
+select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+select option {
+  background-color: #fff;
+  color: rgb(46, 46, 46);
+  cursor: pointer;
+}
+
+select option:hover{
+  background-color: green;
+  cursor: pointer;
+}
+.salesreport{
+  color: #009879;
+ }

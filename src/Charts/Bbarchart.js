@@ -19,41 +19,70 @@ ChartJS.register(
 
 const Bbarchart = () => {
   const [chart, setChart] = useState({})
+  // const [selected, setSelected] = useState("");
   
+  // const changeSelectOptionHandler = (event) => {
+  //   setSelected(event.target.value);
+  // };
+
+//operation to fetch the date data and update the values
+  //var firstdate = `2022-11-01`;
+  //var seconddate = `2023-02-20`;
+
+  var startDate = `Nov 1, 2022`;
+  var endDate = `Feb 20, 2023`;
+  
+  // let date1  = startDate;
+  const [date1, setDate1] = useState(startDate);
+  // let date2  =  endDate;
+  const [date2, setDate2] = useState(endDate);
+
+  // function formatDate(dateString) {
+  //   var date = new Date(dateString);
+  //   var options = {
+  //     month: "long" ,
+  //     day:  "numeric",
+  //     year: "numeric",
+  //   };
+  //   return date.toLocaleDateString("en-US", options);
+  // }
+
+  function handleDate1Change (event) {
+    setDate1(event.target.value);
+};
+
+function handleDate2Change (event) {
+    setDate2(event.target.value);
+};
+
+  // var eagleID = `3`;
+   var bullID = `4`;
+  // var lionID = `5`;
+
+  // let teamID = eagleID;
+
+  // if (selected === "EAGLE") {
+  //   teamID = eagleID;
+    
+  // }
+  //  else if (selected === "BULL") {
+  //   teamID = bullID;
+   
+  // }
+  //  else if (selected === "LION") {
+  //   teamID = lionID;
+    
+  // }
  
 
-  var bullUrl = "https://gplsales.3coretechnology.com/api/report/download/visits?from=Nov%201,%202022&to=Feb%2020,%202023&rep_id=&team_id=4";
+  var bullUrl = `https://gplsales.3coretechnology.com/api/report/download/visits?from=${date1}&to=${date2}&rep_id=&team_id=${bullID}`;
   //var proxyUrl = "https://cors-anywhere.herokuapp.com/";
   //var apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
 
   useEffect(() => {
     const fetchData = async () => {
-      /*await fetch(`${eagleUrl}${bullUrl}${lionUrl}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          //'x-access-token': `${apiKey}`,
-          'Access-Control-Allow-Origin': "*"
-        }
-      })
-        .then((response) => {
-          if (response.ok) {
-            response.json().then((json) => {
-              console.log(json.data);
-              setChart(fetch.data)
-            });
-          }
-        }).catch((error) => {
-          console.log(error);
-        });
-        */
-       /* try {
-            const response = await axios.get(`${eagleUrl}${bullUrl}${lionUrl}`)
-            setChart(response.data)
-          } catch (error) {
-            console.error(error);
-          }*/
+      
           axios(`${bullUrl}`)
           .then((response) => {
             
@@ -166,12 +195,52 @@ var uniqueRep = getUniqueValues(rep);
 
   return (
     <div className='bar'>
+      <h1 className="salesreport">SALES REPORT BARCHART</h1>
+
+    <div className='inputs'>
+  
+    <div className ='dates'>
+    <h3 className='text'>Set Date:</h3>
+    <div>
+     <label>From:</label> 
+    <input type="date" className ='date'  onChange={handleDate1Change} />
+    <label>to:</label>
+    <input type="date" className ='date'  onChange={handleDate2Change} />
+    </div>
+    <div className='button'>
+    {/* <button onClick={setNewDate}>Set Date</button> */}
+    </div>
+    </div>
+
+  {/* <div className='team'>
+    
+     <h3 className='text'>Select Team:</h3>
+     <div>
+    <select onChange={changeSelectOptionHandler}>
+      <option>EAGLE</option>
+      <option>BULL</option>
+      <option>LION</option>
+    </select>
+    </div>
+  </div> */}
+
+
+
+  </div>
+
+{/* <div className='text'>
+<div className='box'></div>
+  { text }
+</div> */}
+
+    <div className='bart'>
       <Bar 
         data={data}
         height={400}
         options={options}
 
       />
+    </div>
     </div>
   )
 }

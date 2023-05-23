@@ -19,13 +19,14 @@ ChartJS.register(
 
 
 
-const Ebarchart = () => {
-  const [chart, setChart] = useState({})
-  // const [selected, setSelected] = useState("");
+const Genbarchart = () => {
+    
+  const [chart, setChart] = useState([])
+  const [selected, setSelected] = useState("");
   
-  // const changeSelectOptionHandler = (event) => {
-  //   setSelected(event.target.value);
-  // };
+  const changeSelectOptionHandler = (event) => {
+    setSelected(event.target.value);
+  };
 
 //operation to fetch the date data and update the values
   //var firstdate = `2022-11-01`;
@@ -58,27 +59,25 @@ function handleDate2Change (event) {
 };
 
   var eagleID = `3`;
-  // var bullID = `4`;
-  // var lionID = `5`;
+  var bullID = `4`;
+  var lionID = `5`;
 
-  // let teamID = eagleID;
+  let teamID = eagleID;
 
-  // if (selected === "EAGLE") {
-  //   teamID = eagleID;
+  if (selected === "EAGLE") {
+    teamID = eagleID;
     
-  // }
-  //  else if (selected === "BULL") {
-  //   teamID = bullID;
+  }
+   else if (selected === "BULL") {
+    teamID = bullID;
    
-  // }
-  //  else if (selected === "LION") {
-  //   teamID = lionID;
+  }
+   else if (selected === "LION") {
+    teamID = lionID;
     
-  // }
-  
- 
+  }
 
-  var eagleUrl = `https://gplsales.3coretechnology.com/api/report/download/visits?from=${date1}&to=${date2}&rep_id=&team_id=${eagleID}`;
+  var teamUrl = `https://gplsales.3coretechnology.com/api/report/download/visits?from=${date1}&to=${date2}&rep_id=&team_id=${teamID}`;
   //var dataLabels = "https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.js";
 
 
@@ -91,7 +90,7 @@ function handleDate2Change (event) {
           } catch (error) {
             console.error(error);
           }*/
-          axios(`${eagleUrl}`)
+          axios(`${teamUrl}`)
           .then((response) => {
             
               
@@ -108,15 +107,16 @@ function handleDate2Change (event) {
 
     };
     fetchData()
-  }, [eagleUrl])
+  }, [teamUrl])
 
   //console.log("chart", chart);
 
 var rep = chart?.visits?.map(x => x.name);
 var customer = chart?.visits?.map(x => x);
- var custom = chart?.visits?.map(x => x.business_name);
+ //var custom = chart?.visits?.map(x => x.business_name);
  //console.log(custom)
 //console.log(customer)
+
 
 var cust = 
 customer.map((x)=>{
@@ -145,10 +145,11 @@ var repNum = uniqueCtm.map((x)=>{
   //console.log(repNum)
 
 
-// // var custNum = uniqueCtm.map((x)=>{
-// //    return  x.customer_id
-// //   });
-// // //   //console.log(custNum)
+// var custNum = uniqueCtm.map((x)=>{
+//    return  x.customer_id
+//   });
+// //console.log(custNum)
+
 
 const getUniqueValues = (array) => (
   [...new Set(array)]
@@ -169,7 +170,8 @@ var uniqueRep = getUniqueValues(rep);
 }
 
   var repTimes = getNumOfTimes(repNum)
-  console.log(repTimes)
+  //console.log(repTimes)
+  
   //  var freq = getNumOfTimes(custom)
   //  console.log(freq)
    
@@ -220,11 +222,8 @@ var uniqueRep = getUniqueValues(rep);
 
   return (
     <div className='bar'>
-
       <h1 className="salesreport">SALES REPORT BARCHART</h1>
-
       <div className='inputs'>
-        
         <div className ='dates'>
         <h3 className='text'>Set Date:</h3>
           <div>
@@ -238,8 +237,11 @@ var uniqueRep = getUniqueValues(rep);
           </div>
         </div>
 
-        {/* <div className='team'>
-          
+        <div className='team'>
+          {/** Bind changeSelectOptionHandler to onChange method of select.
+           * This method will trigger every time different
+           * option is selected.
+           */}
            <h3 className='text'>Select Team:</h3>
            <div>
           <select onChange={changeSelectOptionHandler}>
@@ -248,15 +250,12 @@ var uniqueRep = getUniqueValues(rep);
             <option>LION</option>
           </select>
           </div>
-        </div> */}
-
-
-
+        </div>
         </div>
 
-      {/* <div className='text'>
-      <div className='box'></div>
-        { text }
+      {/* <div className='text2'>
+      <div className='box'></div> 
+        {text}
       </div> */}
 
       <div className='bart'>
@@ -269,10 +268,10 @@ var uniqueRep = getUniqueValues(rep);
 
       />
       </div>
-      <div><p>{repTimes}</p></div>
+      {/* <div><p>{repTimes}</p></div> */}
       {/* <div className='hide'>{repos}</div> */}
     </div>
   )
 }
 
-export default Ebarchart
+export default Genbarchart
